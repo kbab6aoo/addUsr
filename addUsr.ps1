@@ -10,8 +10,8 @@ param([switch]$install, [switch]$uninstall)
  # Global Vars
  #>
 
-$localAcc = "User1"
-$localAccPass = "P@ssW0rd"
+$localAcc = "myTestUsr"
+$localAccPass = "myTempPassword123!"
 $localAccGroup = "Administrators"
 $localAccDescript = "PowerShell Created User"
 
