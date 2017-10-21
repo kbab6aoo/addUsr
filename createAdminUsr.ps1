@@ -1,5 +1,5 @@
 $UsrName = "localAdmn"
-$Pass = "myTempPass123!"
+$Pass = "************"
 $fName = "localAdmin"
 $AccDesc = "Account created by Powershell"
 
