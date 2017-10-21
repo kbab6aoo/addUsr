@@ -10,16 +10,16 @@ param([switch]$install, [switch]$uninstall)
  # Global Vars
  #>
 
-$localAcc = "myTestUsr"
-$localAccPass = "myTempPassword123!"
-$localAccGroup = "Administrators"
-$localAccDescript = "PowerShell Created User"
+$userName = "myTestUsr"
+$userNamePass = "myTempPassword123!"
+$userGroup = "Administrators"
+$userNameDescript = "PowerShell Created User"
 
 <#
  # Functions
  #>
 
-Function addUser($userName, $pass, $descript)
+Function addUser($userName, $userNamePass, $userNameDescript)
 {
     Write-Host("Adding Local User: $userName")
     try
@@ -27,9 +27,9 @@ Function addUser($userName, $pass, $descript)
         $compName = $env:COMPUTERNAME
         $cn = [ADSI]"WinNT://$compName"
         $user = $cn.Create('User',$userName)
-        $user.SetPassword($pass)
+        $user.SetPassword($userNamePass)
         $user.setinfo()
-        $user.description = $descript
+        $user.description = $userNameDescript
         $user.SetInfo()
     }
     catch
@@ -73,10 +73,10 @@ Function rmUser($userName)
 
 if ($install)
 {
-    addUser $localAcc $localAccPass $localAccDescript
-    addToGroup $localAcc $localAccGroup
+    addUser $userName $userNamePass $userNameDescript
+    addToGroup $userName $userNameGroup
 }
 elseif ($uninstall)
 {
-    rmUser $localAcc
+    rmUser $userName
 }
